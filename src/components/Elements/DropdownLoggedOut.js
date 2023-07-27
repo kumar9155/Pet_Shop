@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const DropdownLoggedOut = ({setDropDown}) => {
+const DropdownLoggedOut = ({ setDropDown }) => {
   return (
     <div
       id="dropdownAvatar"
@@ -13,7 +13,7 @@ const DropdownLoggedOut = ({setDropDown}) => {
       >
         <li>
           <Link
-          onClick={()=> setDropDown(false)}
+            onClick={() => setDropDown(false)}
             to="/products"
             className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
           >
@@ -22,7 +22,7 @@ const DropdownLoggedOut = ({setDropDown}) => {
         </li>
         <li>
           <Link
-          onClick={()=> setDropDown(false)}
+            onClick={() => setDropDown(false)}
             to="/login"
             className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
           >
@@ -31,7 +31,7 @@ const DropdownLoggedOut = ({setDropDown}) => {
         </li>
         <li>
           <Link
-          onClick={()=> setDropDown(false)}
+            onClick={() => setDropDown(false)}
             to="/register"
             className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
           >

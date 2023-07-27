@@ -12,7 +12,7 @@ const FeaturedProducts = () => {
         const data = await getFeaturedList();
         setProducts(data);
       } catch (error) {
-        toast.error(error.message)
+        toast.error(error.message);
       }
     }
     fetchProducts();

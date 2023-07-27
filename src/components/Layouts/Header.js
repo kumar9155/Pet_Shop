@@ -7,7 +7,7 @@ import DropdownLoggedIn from "../Elements/DropdownLoggedIn";
 import { useCart } from "../../context";
 
 const Header = () => {
-  const {cartList} = useCart();
+  const { cartList } = useCart();
   const [darkMode, setDarkMode] = useState(false);
   const [searchSection, setSearchSection] = useState(false);
   const [dropDown, setDropDown] = useState(false);
@@ -55,7 +55,12 @@ const Header = () => {
               onClick={() => setDropDown(!dropDown)}
               className="bi bi-person-circle cursor-pointer text-2xl text-gray-700 dark:text-white"
             ></span>
-            {dropDown && (token ? <DropdownLoggedIn setDropDown={setDropDown} /> : <DropdownLoggedOut setDropDown={setDropDown} />)}
+            {dropDown &&
+              (token ? (
+                <DropdownLoggedIn setDropDown={setDropDown} />
+              ) : (
+                <DropdownLoggedOut setDropDown={setDropDown} />
+              ))}
           </div>
         </div>
       </nav>
@@ -65,4 +70,3 @@ const Header = () => {
 };
 
 export default Header;
-
