@@ -10,7 +10,9 @@ export async function login(authDetail) {
     requestOptions
   );
   if (!response.ok) {
+    // eslint-disable-next-line no-throw-literal
     throw { message: response.statusText, status: response.status };
+    
   }
   const data = await response.json();
 
@@ -34,6 +36,7 @@ export async function register(authDetail) {
     requestOptions
   );
   if (!response.ok) {
+    // eslint-disable-next-line no-throw-literal
     throw { message: response.statusText, status: response.status };
   }
   const data = await response.json();
