@@ -50,7 +50,7 @@ const ProductDetails = () => {
           <div className="max-w-xl my-3">
             <img
               className="rounded"
-              src={product.image_local}
+              src={product.poster}
               alt={product.name}
             />
           </div>

@@ -4,26 +4,20 @@ import Rating from "./Rating";
 import { useCart } from "../../context";
 
 const ProductCard = ({ product }) => {
-const {cartList,addToCart,removeFromCart} = useCart();
-const [inCart,setInCart] = useState(false)
+  const { cartList, addToCart, removeFromCart } = useCart();
+  const [inCart, setInCart] = useState(false);
 
-  const { id, name, overview, price, rating, image_local, best_seller } =
-    product;
+  const { id, name, overview, price, rating, poster, best_seller } = product;
 
+  useEffect(() => {
+    const productInCart = cartList.find((item) => item.id === product.id);
 
-    useEffect(()=>{
-        const productInCart = cartList.find(item => item.id === product.id);
-
-        if(productInCart){
-          setInCart(true)
-        }else {
-          setInCart(false)
-        }
-
-
-    },[cartList,product.id])
-
-  
+    if (productInCart) {
+      setInCart(true);
+    } else {
+      setInCart(false);
+    }
+  }, [cartList, product.id]);
 
   return (
     <div className="m-3 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
@@ -34,11 +28,7 @@ const [inCart,setInCart] = useState(false)
           </span>
         )}
 
-        <img
-          className="rounded-t-lg w-full h-64"
-          src={image_local}
-          alt={name}
-        />
+        <img className="rounded-t-lg w-full h-64" src={poster} alt={name} />
       </Link>
       <div className="p-5">
         <Link to={`/products/${id}`}>
@@ -59,8 +49,28 @@ const [inCart,setInCart] = useState(false)
             <span>$</span>
             <span>{price}</span>
           </span>
-          { !inCart && <button onClick={() => addToCart(product)} className={`inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 ${product.in_stock ? "" : "cursor-not-allowed"}`} disabled={ product.in_stock ? "" : "disabled" }>Add To Cart <i className="ml-1 bi bi-plus-lg"></i></button> }  
-                { inCart && <button onClick={() => removeFromCart(product)} className={`inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-800 ${product.in_stock ? "" : "cursor-not-allowed"}`} disabled={ product.in_stock ? "" : "disabled" }>Remove Item <i className="ml-1 bi bi-trash3"></i></button> } 
+          {!inCart && (
+            <button
+              onClick={() => addToCart(product)}
+              className={`inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 ${
+                product.in_stock ? "" : "cursor-not-allowed"
+              }`}
+              disabled={product.in_stock ? "" : "disabled"}
+            >
+              Add To Cart <i className="ml-1 bi bi-plus-lg"></i>
+            </button>
+          )}
+          {inCart && (
+            <button
+              onClick={() => removeFromCart(product)}
+              className={`inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-800 ${
+                product.in_stock ? "" : "cursor-not-allowed"
+              }`}
+              disabled={product.in_stock ? "" : "disabled"}
+            >
+              Remove Item <i className="ml-1 bi bi-trash3"></i>
+            </button>
+          )}
         </p>
       </div>
     </div>
